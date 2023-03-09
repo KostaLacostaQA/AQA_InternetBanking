@@ -27,6 +27,13 @@ public class LoginUserTest extends SetUp {
     void invalidLoginTest() {
         var invalidUser = DataHelper.getInvalidAuthInfo();
         LoginPage loginPage = new LoginPage();
+        loginPage.invalidUser(invalidUser);
+    }
+
+    @Test
+    void invalidLoginLockingTest() {
+        var invalidUser = DataHelper.getInvalidAuthInfo();
+        LoginPage loginPage = new LoginPage();
         for (int i = 0; i < 3; i++) {
             loginPage.invalidUser(invalidUser);
         }
