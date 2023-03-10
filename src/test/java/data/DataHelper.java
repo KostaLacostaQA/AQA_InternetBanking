@@ -22,5 +22,19 @@ public class DataHelper {
         Faker faker = new Faker();
         return new AuthInfo(faker.name().username(), faker.internet().password());
     }
+    @Value
+    public static class CodeInfo {
+        private String Code;
+    }
+
+    public static CodeInfo getValidCode() {
+        return new CodeInfo(DBInteraction.getVerificationCode());
+    }
+
+    public static CodeInfo getInvalidCode() {
+        Faker faker = new Faker();
+        String code = String.valueOf(faker.number().numberBetween(1000, 9999));
+        return new CodeInfo(code);
+    }
 }
 

@@ -15,7 +15,7 @@ public class DBInteraction {
         var runner = new QueryRunner();
         var dataSQL = "SELECT code FROM auth_codes ORDER BY created DESC LIMIT 1";
 
-        try (var conn = DriverManager.getConnection("jdbc:mysql://localhost:3305/app", "app", "pass");)
+        try (var conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/app", "app", "pass");)
         {
             var code = runner.query(conn, dataSQL, new ScalarHandler<String>());
             return code;
@@ -30,7 +30,7 @@ public class DBInteraction {
         var deleteCards = "DELETE FROM cards";
         var deleteUsers = "DELETE FROM users";
 
-        try (var conn = DriverManager.getConnection("jdbc:mysql://localhost:3305/app", "app", "pass"))
+        try (var conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/app", "app", "pass"))
         {
             runner.update(conn, deleteCodes);
             runner.update(conn, deleteTransactions);

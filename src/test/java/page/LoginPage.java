@@ -15,23 +15,18 @@ public class LoginPage {
     private SelenideElement blockedNotification = $("[data-test-id=blocked-notification]");
     private String clearInput = Keys.chord(Keys.CONTROL + "A", Keys.BACK_SPACE);
 
-    public VerificationPage loginUser(DataHelper.AuthInfo info) {
+    public void loginUser(DataHelper.AuthInfo info) {
         loginInput.sendKeys(clearInput);
         loginInput.setValue(info.getLogin());
         passwordInput.sendKeys(clearInput);
         passwordInput.setValue(info.getPassword());
         signInButton.click();
-        return new VerificationPage();
     }
 
-    public void invalidUser(DataHelper.AuthInfo info) {
-        loginInput.sendKeys(clearInput);
-        loginInput.setValue(info.getLogin());
-        passwordInput.sendKeys(clearInput);
-        passwordInput.setValue(info.getPassword());
-        signInButton.click();
+    public void errorUser() {
         errorNotification.shouldBe(Condition.appear);
     }
+
 
     public void blockedUser() {
         blockedNotification.shouldBe(Condition.appear);

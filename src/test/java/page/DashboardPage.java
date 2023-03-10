@@ -9,7 +9,7 @@ public class DashboardPage {
 
     private SelenideElement dashboard = $("[data-test-id=dashboard]");
 
-    public DashboardPage() {
+    public void dashboardLogo() {
         dashboard.shouldBe(Condition.appear);
     }
 }
